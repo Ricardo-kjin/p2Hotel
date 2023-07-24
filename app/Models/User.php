@@ -60,11 +60,22 @@ class User extends Authenticatable
     public function scopeMonitorsXAdmin($query,$id){
         return $query->where('role','monitor')->where('admin_id','=',$id);
     }
+    public function scopeClientesXAdmin($query,$id){
+        return $query->where('role','cliente')->where('admin_id','=',$id);
+    }
 
     public function salas(){
          return $this->belongsToMany(Sala::class)->withTimestamps();
     }
     public function userSalas(){
          return $this->hasMany(Sala::class);
+    }
+
+    public function productos(){
+        return $this->hasMany(Producto::class);
+    }
+
+    public function ubicacion(){
+        return $this->hasOne(Ubicacion::class);
     }
 }

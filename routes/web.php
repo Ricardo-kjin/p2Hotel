@@ -53,6 +53,8 @@ Route::delete('/productos/{producto}', [App\Http\Controllers\ProductoController:
 //Ruta
 
 //Ubicacion
+Route::get('/ubicaciones/{user_id}', [App\Http\Controllers\UbicacionController::class, 'create']);
+Route::post('/ubicaciones', [App\Http\Controllers\UbicacionController::class, 'store']);
 
 //TiempoRuta
 
@@ -65,6 +67,12 @@ Route::put('/vendedores/{vendedor}', [App\Http\Controllers\VendedorController::c
 Route::delete('/vendedores/{vendedor}', [App\Http\Controllers\VendedorController::class, 'destroy']);
 
 //clientes
+Route::get('/clientes', [App\Http\Controllers\ClienteController::class, 'index']);
+Route::get('/clientes/create', [App\Http\Controllers\ClienteController::class, 'create']);
+Route::get('/clientes/{cliente}/edit', [App\Http\Controllers\ClienteController::class, 'edit']);
+Route::post('/clientes', [App\Http\Controllers\ClienteController::class, 'store']);
+Route::put('/clientes/{cliente}', [App\Http\Controllers\ClienteController::class, 'update']);
+Route::delete('/clientes/{cliente}', [App\Http\Controllers\ClienteController::class, 'destroy']);
 
 //personal monitoreo
 Route::get('/monitores', [App\Http\Controllers\MonitorController::class, 'index']);

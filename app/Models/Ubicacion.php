@@ -5,16 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class Ubicacion extends Model
 {
     use HasFactory;
 
-    public function grupo(){
-        return $this->belongsTo(Grupo::class);
-    }
-    public function familia(){
-        return $this->belongsTo(Familia::class);
-    }
     public function user(){
         return $this->belongsTo(User::class);
     }
