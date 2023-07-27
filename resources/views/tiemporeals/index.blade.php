@@ -25,11 +25,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Cedula</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Ubicacion</th>
-                        <th scope="col">Opciones</th>
+                        <th scope="col">Url Ubicacion</th>
 
                     </tr>
                 </thead>
@@ -40,30 +36,18 @@
                         <th scope="row">
                             {{$vendedor->name}}
                         </th>
+
                         <td>
-                            {{$vendedor->email}}
-                        </td>
-                        <td>
-                            {{$vendedor->cedula}}
-                        </td>
-                        <td>
-                            {{$vendedor->role}}
-                        </td>
-                        <td>
-                            @if ($vendedor->ubicacion)
+                            <a href="{{url('/vermaps/'.$vendedor->ubicacion->id)}}">
+                                {{$vendedor->ubicacion->url_map}}
+                            </a>
+                            {{-- @if ($vendedor->ubicacion)
                                 Ubicacion Registrada <br> <a href="{{url('/ubicaciones/vendedores/'.$vendedor->id.'/edit')}}">Editar</a>
                             @else
                                 <a title="Añadir una Ubicación" href="{{url('/ubicaciones/vendedores/'.$vendedor->id)}}">Registrar Ubicacion</a>
-                            @endif
+                            @endif --}}
                         </td>
-                        <td>
-                            <form action="{{url('/vendedores/'.$vendedor->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <a href="{{url('/vendedores/'.$vendedor->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                            </form>
-                        </td>
+
                     </tr>
                     @endforeach
                 </tbody>

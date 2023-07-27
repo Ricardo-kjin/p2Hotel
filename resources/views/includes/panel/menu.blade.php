@@ -24,7 +24,6 @@
                 <i class="fas fa-user-cog text-danger"></i> Encargado Monitoreo
             </a>
         </li>
-
     @endif
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/clientes') }}">
@@ -79,10 +78,26 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/vermaps">
             <i class="fas fa-clock text-danger"></i> MONITOREO DE VENDEDOR
         </a>
     </li>
+</ul>
+<hr class="my-1">
+<!-- Heading -->
+<h6 class="navbar-heading text-muted">REPORTES</h6>
+<!-- Navigation -->
+<ul class="navbar-nav mb-md-3" >
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('/reportesprom')}}">
+            <i class="fas fa-route text-primary"></i>Vendedores Promedio de visita
+        </a>
+    </li>
+    {{-- <li class="nav-item">
+        <a class="nav-link" href="/vermaps">
+            <i class="fas fa-clock text-danger"></i> MONITOREO DE VENDEDOR
+        </a>
+    </li> --}}
 </ul>
 
 

@@ -58,6 +58,11 @@ Route::post('/ubicaciones', [App\Http\Controllers\UbicacionController::class, 's
 Route::get('/ubicaciones/{user_id}/edit', [App\Http\Controllers\UbicacionController::class, 'edit']);
 Route::put('/ubicaciones/{ubicacion}', [App\Http\Controllers\UbicacionController::class, 'update']);
 
+Route::get('/ubicaciones/vendedores/{user_id}', [App\Http\Controllers\UbicacionController::class, 'createv']);
+Route::post('/ubicaciones/vendedores', [App\Http\Controllers\UbicacionController::class, 'storev']);
+Route::get('/ubicaciones/vendedores/{user_id}/edit', [App\Http\Controllers\UbicacionController::class, 'editv']);
+Route::put('/ubicaciones/vendedores/{ubicacion}', [App\Http\Controllers\UbicacionController::class, 'updatev']);
+
 //Ruta
 Route::get('/rutas', [App\Http\Controllers\RutaController::class, 'index']);
 Route::get('/rutas/create', [App\Http\Controllers\RutaController::class, 'create']);
@@ -90,11 +95,16 @@ Route::post('/monitores', [App\Http\Controllers\MonitorController::class, 'store
 Route::put('/monitores/{monitor}', [App\Http\Controllers\MonitorController::class, 'update']);
 Route::delete('/monitores/{monitor}', [App\Http\Controllers\MonitorController::class, 'destroy']);
 
+//tiemporeal
+Route::get('/vermaps', [App\Http\Controllers\VermapController::class, 'index']);
+Route::get('/vermaps/{id}', [App\Http\Controllers\VermapController::class, 'verUbicacionCompartida']);
 
+//googlemaps
+// Route::get('/mapa', 'MapaController@mostrarMapa');
+Route::get('/mapa', [App\Http\Controllers\MapaController::class, 'mostrarMapa']);
 
-
-
-
+//Reporte
+Route::get('/reportesprom', [App\Http\Controllers\ReportesController::class, 'reportesprom']);
 
 
 

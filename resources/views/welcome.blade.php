@@ -38,9 +38,9 @@
                                 <a href="{{ route('login') }}" class="nav-link px-lg-3 py-3 py-lg-4">Log in</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('register') }}" class="nav-link px-lg-3 py-3 py-lg-4">Register</a>
-                                </li>
+                                </li> --}}
                                 {{-- <ul class="navbar-nav align-items-center d-none d-md-flex">
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-menu-arrow "
@@ -79,8 +79,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Online Room</h1>
-                            <span class="subheading">Diseña tus diagramas de clases aqui</span>
+                            <h1>Control del Personal</h1>
+                            <span class="subheading">Seguimiento del personal de Ventas</span>
                         </div>
                     </div>
                 </div>
@@ -93,8 +93,8 @@
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="post.html">
-                            <h2 class="post-title text-right">Diseña tus diagramas aqui!</h2>
-                            <h3 class="post-subtitle text-right">Prueba nuestra pizarra de facil manejo para tu proyectos</h3>
+                            <h2 class="post-title text-right">Seguimiento y control al personal de ventas!</h2>
+                            <h3 class="post-subtitle text-right">Registro de Tu catalogo de productos.</h3>
                         </a>
                     </div>
                     <!-- Divider-->
