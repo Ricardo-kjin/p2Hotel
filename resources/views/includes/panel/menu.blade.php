@@ -74,13 +74,13 @@
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3" >
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{url('/rutas')}}">
             <i class="fas fa-route text-primary"></i>RUTAS
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">
-            <i class="fas fa-clock text-danger"></i> TIEMPO DE RUTAS
+            <i class="fas fa-clock text-danger"></i> MONITOREO DE VENDEDOR
         </a>
     </li>
 </ul>

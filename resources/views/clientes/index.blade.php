@@ -51,7 +51,7 @@
                         </td>
                         <td>
                             @if ($cliente->ubicacion)
-                                Ubicacion Registrada <br> <a href="#">Editar</a>
+                                Ubicacion Registrada <br> <a href="{{url('/ubicaciones/'.$cliente->id.'/edit')}}">Editar</a>
                             @else
                                 <a title="Añadir una Ubicación" href="{{url('/ubicaciones/'.$cliente->id)}}">Registrar Ubicacion</a>
                             @endif

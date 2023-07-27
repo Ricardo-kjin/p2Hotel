@@ -12,4 +12,8 @@ class Ubicacion extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function rutas(){
+        return $this->belongsToMany(Ruta::class)->withPivot('fecha_ini', 'fecha_fin');
+    }
 }

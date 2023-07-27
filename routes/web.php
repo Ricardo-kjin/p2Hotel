@@ -55,8 +55,16 @@ Route::delete('/productos/{producto}', [App\Http\Controllers\ProductoController:
 //Ubicacion
 Route::get('/ubicaciones/{user_id}', [App\Http\Controllers\UbicacionController::class, 'create']);
 Route::post('/ubicaciones', [App\Http\Controllers\UbicacionController::class, 'store']);
+Route::get('/ubicaciones/{user_id}/edit', [App\Http\Controllers\UbicacionController::class, 'edit']);
+Route::put('/ubicaciones/{ubicacion}', [App\Http\Controllers\UbicacionController::class, 'update']);
 
-//TiempoRuta
+//Ruta
+Route::get('/rutas', [App\Http\Controllers\RutaController::class, 'index']);
+Route::get('/rutas/create', [App\Http\Controllers\RutaController::class, 'create']);
+Route::get('/rutas/{ruta}/edit', [App\Http\Controllers\RutaController::class, 'edit']);
+Route::post('/rutas', [App\Http\Controllers\RutaController::class, 'store']);
+Route::put('/rutas/{ruta}', [App\Http\Controllers\RutaController::class, 'update']);
+Route::delete('/rutas/{ruta}', [App\Http\Controllers\RutaController::class, 'destroy']);
 
 //vendedores
 Route::get('/vendedores', [App\Http\Controllers\VendedorController::class, 'index']);

@@ -43,15 +43,15 @@ class UbicacionController extends Controller
         ];
 
         $this->validate($request,$rules,$messages);
-        $producto= new Ubicacion();
-        $producto->latitud= $request->input('latitud');
-        $producto->longitud= $request->input('longitud');
-        $producto->url_map= $request->input('url_map');
-        $producto->estado= "Activo";
-        $producto->user_id= $request->input('user_id');
-        // dd($producto);
-        // dd($producto,$request);
-        $producto->save();
+        $ubicacion= new Ubicacion();
+        $ubicacion->latitud= $request->input('latitud');
+        $ubicacion->longitud= $request->input('longitud');
+        $ubicacion->url_map= $request->input('url_map');
+        $ubicacion->estado= "Activo";
+        $ubicacion->user_id= $request->input('user_id');
+        // dd($ubicacion);
+        // dd($ubicacion,$request);
+        $ubicacion->save();
         $notification='La ubicacion ha sido creada correctamente';
 
         return redirect('/clientes')->with(compact('notification'));
@@ -70,8 +70,9 @@ class UbicacionController extends Controller
      */
     public function edit(string $user_id)
     {
-        $user=User::find($user_id)->ubicacion()->first();
-        return view('ubicaciones.edit',compact('user'));
+        $ubicacion=User::find($user_id)->ubicacion()->first();
+        // dd($ubicacion);
+        return view('ubicaciones.edit',compact('ubicacion'));
     }
 
     /**
@@ -79,7 +80,30 @@ class UbicacionController extends Controller
      */
     public function update(Request $request, Ubicacion $ubicacion)
     {
-        //
+        // dd($ubicacion,$request);
+        $rules=[
+            'latitud'=>'required',
+            'longitud'=>'required',
+            'url_map'=>'required',
+        ];
+
+        $messages=[
+            'latitud.required'=>'La latitud de la ubicacion es obligatorio',
+            'longitud.required'=>'La logitud de la ubicacion es obligatorio',
+            'url_map.required'=>'El campo Url de la ubicacion es obligatorio',
+        ];
+
+        $this->validate($request,$rules,$messages);
+        // $ubicacion= new Ubicacion();
+        $ubicacion->latitud= $request->input('latitud');
+        $ubicacion->longitud= $request->input('longitud');
+        $ubicacion->url_map= $request->input('url_map');
+        // dd($ubicacion);
+        // dd($ubicacion,$request);
+        $ubicacion->save();
+        $notification='La ubicacion ha sido actualizada correctamente';
+
+        return redirect('/clientes')->with(compact('notification'));
     }
 
     /**
