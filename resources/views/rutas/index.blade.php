@@ -31,7 +31,9 @@
                         <th scope="col">estado</th>
                         <th scope="col">tiempo total</th>
                         <th scope="col"># Ubicaciones</th>
-                        <th scope="col">Opciones</th>
+                        @if (auth()->user()->role=='admin')
+                            <th scope="col">Opciones</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>

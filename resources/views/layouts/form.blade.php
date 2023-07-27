@@ -52,7 +52,7 @@
 
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{route('home')}}">
-                <i class="ni ni-circle-08"></i>
+                {{-- <i class="ni ni-circle-08"></i> --}}
                 <span class="nav-link-inner--text">Home</span>
               </a>
             </li>

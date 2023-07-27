@@ -12,7 +12,11 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $vendedors=User::vendedorsXAdmin(auth()->user()->id)->paginate(10);
+        if (auth()->user()->role=="admin") {
+            $vendedors=User::vendedorsXAdmin(auth()->user()->id)->paginate(10);
+        } else {
+            $vendedors=User::where('id',auth()->user()->id)->paginate(10);
+        }
         return view('vendedors.index',compact('vendedors'));
     }
 

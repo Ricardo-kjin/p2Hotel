@@ -30,7 +30,8 @@
             </button>
             <!-- Brand -->
             <a class="navbar-brand pt-0" href="/">
-                <img src="{{asset('img/brand/prueba.png')}}" class="navbar-brand-img" alt="" width="100%">
+                <b>HORUS</b> <br><h5>Srl</h5>
+                {{-- <img src="{{asset('img/brand/prueba.png')}}" class="navbar-brand-img" alt="" width="100%"> --}}
             </a>
             <!-- User -->
             <ul class="nav align-items-center d-md-none">

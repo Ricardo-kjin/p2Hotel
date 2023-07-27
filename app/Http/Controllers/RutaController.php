@@ -15,7 +15,11 @@ class RutaController extends Controller
      */
     public function index()
     {
-        $rutas = Ruta::all();
+        if (auth()->user()->role=="admin") {
+            $rutas = Ruta::all();
+        }else {
+            $rutas = Ruta::where('user_id',auth()->user()->id)->get();
+        }
 
         return view('rutas.index', compact('rutas'));
     }

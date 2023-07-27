@@ -13,23 +13,27 @@
             <i class="ni ni-tv-2 text-danger"></i> Gestion de Usuario
         </a>
     </li> --}}
-    @if (auth()->user()->role=='admin')
+    @if (auth()->user()->role=='admin' || auth()->user()->role=='vendedor' )
         <li class="nav-item">
             <a class="nav-link " href="{{ url('/vendedores') }}">
                 <i class="fas fa-user-tie text-warning"></i> Vendedores
             </a>
         </li>
+    @endif
+    @if (auth()->user()->role=='admin')
         <li class="nav-item">
             <a class="nav-link " href="{{ url('/monitores') }}">
                 <i class="fas fa-user-cog text-danger"></i> Encargado Monitoreo
             </a>
         </li>
     @endif
-    <li class="nav-item">
-        <a class="nav-link " href="{{ url('/clientes') }}">
-            <i class="fas fa-user text-success"></i> Cliente
-        </a>
-    </li>
+    @if (auth()->user()->role=='admin' || auth()->user()->role=='cliente' )
+        <li class="nav-item">
+            <a class="nav-link " href="{{ url('/clientes') }}">
+                <i class="fas fa-user text-success"></i> Cliente
+            </a>
+        </li>
+    @endif
     <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
@@ -40,65 +44,72 @@
         </form>
     </li>
 </ul>
-<!-- Divider -->
-<hr class="my-1">
-<!-- Heading -->
-<h6 class="navbar-heading text-muted">GESTION DE PRODUCTO</h6>
-<!-- Navigation -->
-<ul class="navbar-nav mb-md-3" >
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('/familias')}}">
-            <i class="ni ni-bullet-list-67 text-primary"></i>Familia
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('/grupos')}}">
-            <i class="ni ni-building text-info" ></i> Grupo
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('/subgrupos')}}">
-            <i class="ni ni-basket text-blue"></i> Subgrupo
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('/productos')}}">
-            <i class="fas fa-car-battery"></i>Producto
-        </a>
-    </li>
+@if (auth()->user()->role=='admin' )
+
+    <!-- Divider -->
+    <hr class="my-1">
+    <!-- Heading -->
+    <h6 class="navbar-heading text-muted">GESTION DE PRODUCTO</h6>
+    <!-- Navigation -->
+    <ul class="navbar-nav mb-md-3" >
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/familias')}}">
+                <i class="ni ni-bullet-list-67 text-primary"></i>Familia
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/grupos')}}">
+                <i class="ni ni-building text-info" ></i> Grupo
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/subgrupos')}}">
+                <i class="ni ni-basket text-blue"></i> Subgrupo
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/productos')}}">
+                <i class="fas fa-car-battery"></i>Producto
+            </a>
+        </li>
+    </ul>
+@endif
+@if (auth()->user()->role=='admin' || auth()->user()->role=='vendedor' )
+
+    <hr class="my-1">
+    <!-- Heading -->
+    <h6 class="navbar-heading text-muted">GESTION DE RUTA</h6>
+    <!-- Navigation -->
+    <ul class="navbar-nav mb-md-3" >
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/rutas')}}">
+                <i class="fas fa-route text-primary"></i>RUTAS
+            </a>
+        </li>
+        @if (auth()->user()->role=='admin')
+            <li class="nav-item">
+                <a class="nav-link" href="/vermaps">
+                    <i class="fas fa-clock text-danger"></i> MONITOREO DE VENDEDOR
+                </a>
+            </li>
+        @endif
 </ul>
-<hr class="my-1">
-<!-- Heading -->
-<h6 class="navbar-heading text-muted">GESTION DE RUTA</h6>
-<!-- Navigation -->
-<ul class="navbar-nav mb-md-3" >
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('/rutas')}}">
-            <i class="fas fa-route text-primary"></i>RUTAS
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/vermaps">
-            <i class="fas fa-clock text-danger"></i> MONITOREO DE VENDEDOR
-        </a>
-    </li>
-</ul>
-<hr class="my-1">
-<!-- Heading -->
-<h6 class="navbar-heading text-muted">REPORTES</h6>
-<!-- Navigation -->
-<ul class="navbar-nav mb-md-3" >
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('/reportesprom')}}">
-            <i class="fas fa-route text-primary"></i>Vendedores Promedio de visita
-        </a>
-    </li>
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="/vermaps">
-            <i class="fas fa-clock text-danger"></i> MONITOREO DE VENDEDOR
-        </a>
-    </li> --}}
-</ul>
+@endif
+@if (auth()->user()->role=='admin' )
+    <hr class="my-1">
+    <!-- Heading -->
+    <h6 class="navbar-heading text-muted">REPORTES</h6>
+    <!-- Navigation -->
+    <ul class="navbar-nav mb-md-3" >
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/reportesprom')}}">
+                <i class="fas fa-route text-primary"></i>Vendedores Promedio de visita
+            </a>
+        </li>
+
+    </ul>
+
+@endif
 
 
 

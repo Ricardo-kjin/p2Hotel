@@ -29,7 +29,9 @@
                         <th scope="col">Cedula</th>
                         <th scope="col">Rol</th>
                         <th scope="col">UBICACION</th>
-                        <th scope="col">Opciones</th>
+                        @if (auth()->user()->role=='admin')
+                            <th scope="col">Opciones</th>
+                        @endif
 
                     </tr>
                 </thead>
@@ -56,14 +58,16 @@
                                 <a title="Añadir una Ubicación" href="{{url('/ubicaciones/'.$cliente->id)}}">Registrar Ubicacion</a>
                             @endif
                         </td>
-                        <td>
-                            <form action="{{url('/clientes/'.$cliente->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <a href="{{url('/clientes/'.$cliente->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                            </form>
-                        </td>
+                        @if (auth()->user()->role=='admin')
+                            <td>
+                                <form action="{{url('/clientes/'.$cliente->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{url('/clientes/'.$cliente->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
