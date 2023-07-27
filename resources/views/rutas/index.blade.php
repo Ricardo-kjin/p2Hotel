@@ -48,7 +48,7 @@
                             {{$ruta->tiempo_total}}
                         </th>
                         <th scope="row">
-                            {{$ruta->ubicacions->count()}}
+                            {{$ruta->ubicacions()->count()}}
                         </th>
                         <td>
                             <form action="{{url('/rutas/'.$ruta->id)}}" method="POST">

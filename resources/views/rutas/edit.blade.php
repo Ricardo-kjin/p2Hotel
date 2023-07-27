@@ -29,7 +29,8 @@
                     </div>
                 @endforeach
             @endif
-            <form action="{{ url('/rutas') }}" method="POST">
+            <form action="{{ url('/rutas/'.$ruta->id) }}" method="POST">
+                @method('PUT')
                 @csrf
                 <div class="form-group">
                     <label for="codigo_ruta">Codigo de la ruta</label>
@@ -68,13 +69,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($clientes as $cliente)
+                            @foreach($clientesEnRuta as $cliente)
                             <tr>
                                 <td>
                                     {{ $cliente->name }}
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="seleccionados[]" value="{{ $cliente->id }}" @if($ruta->ubicacions->contains($cliente->ubicacion->id)) checked @endif>
+                                    <input type="checkbox" name="seleccionados[]" value="{{ $cliente->id }}" @if($ruta->ubicacions()->exists($cliente->ubicacion->id)) checked @endif>
                                 </td>
                                 <td>
                                     {{-- <select name="rutas_ubicaciones[{{ $cliente->id }}][habitaciones][]" multiple required>
@@ -93,12 +94,37 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @foreach($clientesSinRuta as $cliente)
+                            <tr>
+                                <td>
+                                    {{ $cliente->name }}
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="seleccionados[]" value="{{ $cliente->id }}">
+                                </td>
+                                <td>
+                                    {{-- <select name="rutas_ubicaciones[{{ $cliente->id }}][habitaciones][]" multiple required>
+                                        @foreach($habitaciones as $habitacion)
+                                            <option value="{{ $habitacion->id }}">{{ $habitacion->nombre }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                    {{$cliente->ubicacion()->first()->latitud}} -
+                                    {{$cliente->ubicacion()->first()->longitud}}
+                                </td>
+                                <td>
+                                    <input type="date" name="fechas[{{ $cliente->id }}][inicio]" >
+                                </td>
+                                <td>
+                                    <input type="date" name="fechas[{{ $cliente->id }}][fin]">
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <br>
 
-                <button type="submit" class="btn btn-primary"> Crear ruta</button>
+                <button type="submit" class="btn btn-primary"> Editar ruta</button>
             </form>
         </div>
     </div>
