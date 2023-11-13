@@ -20,7 +20,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">OnLineEdu</a>
+                <a class="navbar-brand" href="index.html">DevTop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -79,8 +79,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Control del Personal</h1>
-                            <span class="subheading">Seguimiento del personal de Ventas</span>
+                            <h1>Hotel Jenecherú</h1>
+                            <span class="subheading">Reservas de habitaciones</span>
                         </div>
                     </div>
                 </div>
@@ -93,8 +93,8 @@
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="post.html">
-                            <h2 class="post-title text-right">Seguimiento y control al personal de ventas!</h2>
-                            <h3 class="post-subtitle text-right">Registro de Tu catalogo de productos.</h3>
+                            <h2 class="post-title text-right">Descubre la sofisticación en cada estancia</h2>
+                            <h3 class="post-subtitle text-right">Tu refugio de lujo aguarda en nuestro hotel, donde el confort y la elegancia se encuentran para crear experiencias inolvidables. ¡Bienvenido a tu hogar lejos de casa!</h3>
                         </a>
                     </div>
                     <!-- Divider-->
