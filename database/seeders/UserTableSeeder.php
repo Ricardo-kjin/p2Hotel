@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'), // password
             'cedula'=>'8754452',
-            'address'=>'Av. Siempre Viva',
+            // 'address'=>'Av. Siempre Viva',
             'phone'=>'+591 78545225',
             'role'=>'admin',
         ]);
@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'), // password
             'cedula'=>'8751255',
-            'address'=>'Av. Siempre Viva',
+            // 'address'=>'Av. Siempre Viva',
             'phone'=>'+591 78545256',
             'role'=>'admin',
         ]);

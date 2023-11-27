@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecepcionistaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,69 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//RUTA DE PAISES
+Route::resource('paises', App\Http\Controllers\PaisController::class);
+
+//RUTA DE provincia
+Route::resource('provincias', App\Http\Controllers\ProvinciasController::class);
+
+//RUTA DE recepcionistas
+Route::resource('recepcionistas', RecepcionistaController::class);
+Route::post('get-ciudades-provincias', [RecepcionistaController::class, 'getCiudadesProvincias'])->name('get-ciudades-provincias');
+
+//RESERVAS FALTA LISTAR
+
+Route::get('/reservas/create', [App\Http\Controllers\ReservasController::class, 'create']);
+Route::post('/reservas/store', [App\Http\Controllers\ReservasController::class, 'store']);
+
+//promociones
+Route::get('/promociones', [App\Http\Controllers\PromocionController::class, 'index']);
+Route::get('/promociones/create', [App\Http\Controllers\PromocionController::class, 'create']);
+Route::post('/promociones', [App\Http\Controllers\PromocionController::class, 'store']);
+Route::get('/promociones/{id}/edit', [App\Http\Controllers\PromocionController::class, 'edit']);
+Route::put('/promociones/{id}', [App\Http\Controllers\PromocionController::class, 'update']);
+Route::delete('/promociones/{id}', [App\Http\Controllers\PromocionController::class, 'destroy']);
+
+//servicios
+Route::get('/servicios', [App\Http\Controllers\ServiciosController::class, 'index']);
+Route::get('/servicios/create', [App\Http\Controllers\ServiciosController::class, 'create']);
+Route::post('/servicios', [App\Http\Controllers\ServiciosController::class, 'store']);
+Route::get('/servicios/{id}/edit', [App\Http\Controllers\ServiciosController::class, 'edit']);
+Route::put('/servicios/{id}', [App\Http\Controllers\ServiciosController::class, 'update']);
+Route::delete('/servicios/{id}', [App\Http\Controllers\ServiciosController::class, 'destroy']);
+
+//MS HABITACIONES-TIPO HABITACIONES
+//tipo de habitaciones
+Route::get('/tipos-habitacion', [App\Http\Controllers\TipoHabitacionController::class, 'index']);
+Route::get('/tipos-habitacion/create', [App\Http\Controllers\TipoHabitacionController::class, 'create']);
+Route::post('/tipos-habitacion', [App\Http\Controllers\TipoHabitacionController::class, 'store']);
+Route::get('/tipos-habitacion/{id}/edit', [App\Http\Controllers\TipoHabitacionController::class, 'edit']);
+Route::put('/tipos-habitacion/{id}', [App\Http\Controllers\TipoHabitacionController::class, 'update']);
+Route::delete('/tipos-habitacion/{id}', [App\Http\Controllers\TipoHabitacionController::class, 'destroy']);
+
+//habitaciones
+Route::get('/habitaciones', [App\Http\Controllers\HabitacionController::class, 'index']);
+Route::get('/habitaciones/create', [App\Http\Controllers\HabitacionController::class, 'create']);
+Route::post('/habitaciones', [App\Http\Controllers\HabitacionController::class, 'store']);
+Route::get('/habitaciones/{id}/edit', [App\Http\Controllers\HabitacionController::class, 'edit']);
+Route::put('/habitaciones/{id}', [App\Http\Controllers\HabitacionController::class, 'update']);
+Route::delete('/habitaciones/{id}', [App\Http\Controllers\HabitacionController::class, 'destroy']);
+
+//imagenes
+Route::get('/imagenes/create', [App\Http\Controllers\ImagenController::class, 'create']);
+Route::post('/imagenes', [App\Http\Controllers\ImagenController::class, 'store']);
+
+
+
+
+
+
+
+
+
+
+
 
 //Familia
 Route::get('/familias', [App\Http\Controllers\FamiliaController::class, 'index']);

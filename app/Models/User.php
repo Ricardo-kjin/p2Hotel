@@ -22,10 +22,11 @@ class User extends Authenticatable
         'email',
         'password',
         'cedula',
-        'address',
         'phone',
         'role',
-        'admin_id'
+        'provincia_id',
+        'user_id'
+
     ];
 
     /**
@@ -81,5 +82,45 @@ class User extends Authenticatable
 
     public function rutas(){
         return $this->hasMany(Ruta::class);
+    }
+
+    //PARTE DE CHATGPT
+
+    public function scopeRecepcionistas($query){
+        return $query->where('role','recepcionista');
+    }
+
+    public function scopeClientes($query){
+        return $query->where('role','cliente');
+    }
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincias::class, 'provincia_id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function imagen()
+    {
+        return $this->hasOne(Imagen::class, 'user_id');
+    }
+
+    public function reservasRecepcionista()
+    {
+        return $this->hasMany(Reservas::class, 'user1_id', 'id');
+    }
+
+    public function reservasCliente()
+    {
+        return $this->hasMany(Reservas::class, 'user2_id', 'id');
+    }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
     }
 }

@@ -19,10 +19,14 @@ return new class extends Migration
             $table->string('password');
 
             $table->string('cedula');
-            $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('role');
-            $table->integer('admin_id')->nullable();
+
+            $table->unsignedBigInteger('provincia_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+
+            $table->foreign('provincia_id')->references('id')->on('provincias')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
             $table->rememberToken();
             $table->timestamps();
