@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('imagens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('url_imagen')->nullable();
-            $table->bigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

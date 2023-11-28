@@ -17,10 +17,11 @@ return new class extends Migration
             $table->integer('descuento')->nullable();
             $table->decimal('Total', 18, 2);
             $table->integer('nro_ocupantes');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             // $table->foreign('user2_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
