@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
             'cedula'=>'8754452',
             // 'address'=>'Av. Siempre Viva',
             'phone'=>'+591 78545225',
-            'role'=>'admin',
+            'role'=>'recepcionista',
         ]);
         User::create([
             'name' => 'Enrique Ramirez',
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
             'cedula'=>'8751255',
             // 'address'=>'Av. Siempre Viva',
             'phone'=>'+591 78545256',
-            'role'=>'admin',
+            'role'=>'recepcionista',
         ]);
         // User::factory()->count(30)->create();
     }

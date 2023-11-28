@@ -28,8 +28,8 @@
                         <th scope="col">Correo</th>
                         <th scope="col">Cedula</th>
                         <th scope="col">Rol</th>
-                        <th scope="col">UBICACION</th>
-                        @if (auth()->user()->role=='admin')
+                        {{-- <th scope="col">UBICACION</th> --}}
+                        @if (auth()->user()->role=='recepcionista')
                             <th scope="col">Opciones</th>
                         @endif
 
@@ -51,14 +51,14 @@
                         <td>
                             {{$cliente->role}}
                         </td>
-                        <td>
+                        {{-- <td>
                             @if ($cliente->ubicacion)
                                 Ubicacion Registrada <br> <a href="{{url('/ubicaciones/'.$cliente->id.'/edit')}}">Editar</a>
                             @else
                                 <a title="Añadir una Ubicación" href="{{url('/ubicaciones/'.$cliente->id)}}">Registrar Ubicacion</a>
                             @endif
-                        </td>
-                        @if (auth()->user()->role=='admin')
+                        </td> --}}
+                        @if (auth()->user()->role=='recepcionista')
                             <td>
                                 <form action="{{url('/clientes/'.$cliente->id)}}" method="POST">
                                     @csrf

@@ -56,7 +56,7 @@ class User extends Authenticatable
         return $query->where('role','desarrollador')->where('admin_id','=',$id);
     }
     public function scopeVendedorsXAdmin($query,$id){
-        return $query->where('role','vendedor')->where('admin_id','=',$id);
+        return $query->where('role','recepcionista')->where('admin_id','=',$id);
     }
     public function scopeMonitorsXAdmin($query,$id){
         return $query->where('role','monitor')->where('admin_id','=',$id);
@@ -65,24 +65,9 @@ class User extends Authenticatable
         return $query->where('role','cliente')->where('admin_id','=',$id);
     }
 
-    public function salas(){
-         return $this->belongsToMany(Sala::class)->withTimestamps();
-    }
-    public function userSalas(){
-         return $this->hasMany(Sala::class);
-    }
 
-    public function productos(){
-        return $this->hasMany(Producto::class);
-    }
 
-    public function ubicacion(){
-        return $this->hasOne(Ubicacion::class);
-    }
 
-    public function rutas(){
-        return $this->hasMany(Ruta::class);
-    }
 
     //PARTE DE CHATGPT
 

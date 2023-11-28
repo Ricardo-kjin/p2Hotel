@@ -12,11 +12,11 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role=="admin") {
-            $clientes=User::clientesXAdmin(auth()->user()->id)->orderBy('id','asc')->paginate(10);
-        } else {
-            $clientes=User::where('id',auth()->user()->id)->paginate(10);
-        }
+
+            $clientes=User::clientes()->orderBy('id','asc')->paginate(10);
+
+            // $clientes=User::where('id',auth()->user()->id)->paginate(10);
+
         return view('clientes.index',compact('clientes'));
     }
 

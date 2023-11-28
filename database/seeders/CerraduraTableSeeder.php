@@ -14,8 +14,8 @@ class CerraduraTableSeeder extends Seeder
     public function run(): void
     {
         Cerradura::create([
-            'cantidad_veces_abierto'=>0,
-            'cantidad_veces_cerrado'=>0,
+            'cantidad_veces_abierto'=>186,
+            'cantidad_veces_cerrado'=>97,
         ]);
     }
 }
