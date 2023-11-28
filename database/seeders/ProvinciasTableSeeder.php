@@ -17,5 +17,9 @@ class ProvinciasTableSeeder extends Seeder
             'nombre'=>'Santa Cruz',
             'pais_id'=>1,
         ]);
+        Provincias::create([
+            'nombre'=>'Buenos Aires',
+            'pais_id'=>2,
+        ]);
     }
 }

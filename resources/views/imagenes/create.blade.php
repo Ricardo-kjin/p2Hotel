@@ -6,7 +6,7 @@
       <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
-                  <h6 class="text-white text-capitalize ps-3">NUEVO PAIS</h6>
+                  <h6 class="text-white text-capitalize ps-3">IMagen para el perfil</h6>
               </div>
           </div>
           <div class="card-body">
@@ -43,9 +43,17 @@
               <!-- En tu vista show.blade.php -->
                       @if ($imagen)
                           <div class="form-control">
-                              <h2>Detalles de la Imagen</h2>
-                              <p>ID: {{ $imagen->id }}</p>
-                              <p>Usuario: {{ $imagen->user->name }}</p>
+                                <div class="card-body d-flex justify-content-end pt-0 bt-0 mt-0">
+                                    <a href="{{ url('/captura') }}" class="btn btn-icon btn-3 btn-success" role="button" aria-pressed="true">
+                                        <span class="btn-inner--icon"><i class="material-icons">queue</i></span>
+                                        <span class="btn-inner--text">Abrir Cerradura</span>
+                                    </a>
+                                    <a href="{{ url('/captura') }}" class="btn btn-icon btn-3 btn-danger" role="button" aria-pressed="true">
+                                        <span class="btn-inner--icon"><i class="material-icons">queue</i></span>
+                                        <span class="btn-inner--text">Cerrar Cerradura</span>
+                                    </a>
+                                </div>
+
                               <!-- Otros detalles de la imagen -->
                               <img src="{{ asset( '/storage/imagenes/'.$imagen->url_imagen) }}" alt="Imagen">
                           </div>

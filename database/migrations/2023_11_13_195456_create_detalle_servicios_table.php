@@ -18,8 +18,8 @@ return new class extends Migration
             $table->decimal('precio', 18, 2)->nullable();
             $table->integer('cantidad')->nullable();
             $table->decimal('subtotal', 18, 2)->nullable();
-            $table->bigInteger('reserva_id')->nullable();
-            $table->string('servicio_id', 50)->nullable();
+            $table->bigInteger('reserva_id');
+            $table->string('servicio_id', 50);
             $table->timestamps();
 
             $table->foreign('reserva_id')->references('id')->on('reservas')->onDelete('cascade');

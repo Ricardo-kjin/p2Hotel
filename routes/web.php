@@ -74,6 +74,10 @@ Route::delete('/habitaciones/{id}', [App\Http\Controllers\HabitacionController::
 Route::get('/imagenes/create', [App\Http\Controllers\ImagenController::class, 'create']);
 Route::post('/imagenes', [App\Http\Controllers\ImagenController::class, 'store']);
 
+Route::get('/captura', [App\Http\Controllers\ImagenController::class, 'mostrarCaptura'])->name('mostrarCaptura');
+Route::post('/captura/procesar', [App\Http\Controllers\ImagenController::class, 'procesarCaptura'])->name('procesarCaptura');
+
+
 
 
 

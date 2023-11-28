@@ -13,17 +13,17 @@ class Reservas extends Model
 
     public function recepcionista()
     {
-        return $this->belongsTo(User::class, 'user1_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function cliente()
     {
-        return $this->belongsTo(User::class, 'user2_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function detalleHabitacion()
+    public function detalleHabitacions()
     {
-        return $this->hasMany(DetalleHabitacion::class, 'reserva_id', 'id');
+        return $this->hasMany(DetalleHabitacion::class,'reserva_id','id');
     }
 
     public function detalleServicios()

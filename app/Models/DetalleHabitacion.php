@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class DetalleHabitacion extends Model
 {
     use HasFactory;
+    protected $table = 'detalle_habitacions';
+    protected $fillable = ['fecha_ini', 'fecha_fin', 'precio', 'cantidad', 'subtotal', 'reserva_id','producto_id'];
 
-    protected $fillable = ['fecha_ini', 'fecha_fin', 'precio', 'cantidad', 'subtotal'];
 
     public function reserva()
     {
-        return $this->belongsTo(Reservas::class, 'reserva_id', 'id');
+        return $this->belongsTo(Reservas::class, 'reservas_id', 'id');
     }
 }

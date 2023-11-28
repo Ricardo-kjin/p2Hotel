@@ -9,7 +9,7 @@ class DetalleServicios extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fecha_ini', 'fecha_fin', 'precio', 'cantidad', 'subtotal'];
+    protected $fillable = ['fecha_ini', 'fecha_fin', 'precio', 'cantidad', 'subtotal', 'reserva_id','servicio_id'];
 
     public function reserva()
     {

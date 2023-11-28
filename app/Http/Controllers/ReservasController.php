@@ -44,7 +44,7 @@ class ReservasController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+
         // Validación de datos del cliente
         $request->validate([
             'name' => 'required|string|max:100',
@@ -82,7 +82,7 @@ class ReservasController extends Controller
 
             // ... otros campos de la reserva ...
         ]);
-
+        $reserva_id=Reservas::latest('id')->first()->id;
         $fechaInicio = Carbon::createFromFormat('Y-m-d', $request->input('fecha_ini_habitacion'));
         $fechaFin = Carbon::createFromFormat('Y-m-d', $request->input('fecha_fin_habitacion'));
 
@@ -97,19 +97,20 @@ class ReservasController extends Controller
         //precio habitacion
         $precioHabitacion= Http::get("https://habitaciones.proyeapp.xyz/api/habitaciones/{$request->input('habitacion')}/")->json();
 
+        // dd($precioHabitacion['id']);
         // Crear el detalle de habitación y servicio
         $detalleHabitacion= DetalleHabitacion::create([
-            'reserva_id' => $reserva->id,
+            'reserva_id' => $reserva_id,
             'fecha_ini'=> $request->input('fecha_ini_habitacion'),
             'fecha_fin'=> $request->input('fecha_fin_habitacion'),
             'precio'=> $precioHabitacion['precio'],
             'cantidad'=>$diferenciaEnDias,
             'subtotal'=>$precioHabitacion['precio']*$diferenciaEnDias,
-            'producto_id' => $request->input('habitacion'),
+            'producto_id' => $precioHabitacion['id'],
             // 'precio' => obtenerPrecioHabitacion($request->input('habitacion_id')), // Función para obtener el precio de la habitación (API)
             // ... otros campos del detalle de habitación ...
         ]);
-
+        // dd($detalleHabitacion->id, $detalleHabitacion);
         $fechaInicioServ = Carbon::createFromFormat('Y-m-d', $request->input('fecha_ini_servicio'));
         $fechaFinServ = Carbon::createFromFormat('Y-m-d', $request->input('fecha_fin_servicio'));
 
@@ -125,16 +126,16 @@ class ReservasController extends Controller
         $precioServicio= Http::get("https://hotel-servicios.onrender.com/api/servicios/{$request->input('servicio')}")->json();
         // dd($precioServicio);
         // SE AÑADE UN FOR
-
+        // dd($precioServicio['servicio']['_id']);
         $detalleServicio=DetalleServicios::create([
-            'reserva_id' => $reserva->id,
+            'reserva_id' => $reserva_id,
             'fecha_ini'=>$request->input('fecha_ini_servicio'),
             'fecha_fin'=>$request->input('fecha_fin_servicio'),
             'precio'=>$precioServicio['servicio']['precio'],
             'cantidad'=>$diferenciaEnDiasServ,
             'subtotal'=>$precioServicio['servicio']['precio']*$diferenciaEnDiasServ,
 
-            'servicio_id' => $request->input('servicio'),
+            'servicio_id' => $precioServicio['servicio']['_id'],
             // 'precio' => obtenerPrecioServicio($request->input('servicio_id')), // Función para obtener el precio del servicio (API)
             // ... otros campos del detalle de servicio ...
         ]);
@@ -144,7 +145,7 @@ class ReservasController extends Controller
         $descuento = 10; // Función para calcular el descuento
         $reserva->descuento = $descuento;
 
-        $reserva->Total = ($detalleHabitacion->subtotal+$detalleServicio->subtotal)*$descuento/100; // Función para calcular el total de la reserva
+        $reserva->Total = ($detalleHabitacion->subtotal*$diferenciaEnDias+$detalleServicio->subtotal*$diferenciaEnDiasServ)*$descuento/100; // Función para calcular el total de la reserva
         $reserva->save();
 
         return redirect('/reservas/create')

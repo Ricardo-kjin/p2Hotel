@@ -2,22 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Pais;
+use App\Models\Cerradura;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PaisTableSeeder extends Seeder
+class CerraduraTableSeeder extends Seeder
 {
-    /**'
+    /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Pais::create([
-            'nombre'=>'Bolivia',
-        ]);
-        Pais::create([
-            'nombre'=>'Argentina',
+        Cerradura::create([
+            'cantidad_veces_abierto'=>0,
+            'cantidad_veces_cerrado'=>0,
         ]);
     }
 }
