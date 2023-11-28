@@ -29,13 +29,14 @@ class ReservasController extends Controller
         $habitaciones = Http::get('https://habitaciones.proyeapp.xyz/api/habitaciones')->json();
         $servicios = Http::get('https://hotel-servicios.onrender.com/api/servicios')->json();
 
-
+        $descuento= Http::get('https://mspromociones-production.up.railway.app/api/promociones/2');
+        // dd($descuento);
 
         $paises = Pais::all();// obtenerPaises(); // Función para obtener la lista de países
         //$habitaciones = obtenerHabitaciones(); // Función para obtener datos de habitaciones (API)
         //$servicios = obtenerServicios(); // Función para obtener datos de servicios (API)
 
-        return view('reservas.create', compact('paises', 'habitaciones', 'servicios'));
+        return view('reservas.create', compact('paises', 'habitaciones', 'servicios','descuento'));
         // return view('reservas.create', compact('paises'));
     }
 

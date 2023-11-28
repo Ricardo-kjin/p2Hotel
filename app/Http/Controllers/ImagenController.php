@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cerradura;
 use App\Models\Imagen;
 use App\Models\Reservas;
 use App\Models\User;
@@ -177,7 +178,7 @@ class ImagenController extends Controller
             $responseHabitacion = Http::get("https://habitaciones.proyeapp.xyz/api/habitaciones/{$habitacion_id}/");
             $habitacion = $responseHabitacion->json();
             // dd($habitacion['tipo_habitacion']['id']);
-
+            $cerradura=Cerradura::orderBy('id','asc')->first();
             if ($habitacion['estado_cerradura']=="EC-000") {
                 # code...
                 $response = Http::put("https://habitaciones.proyeapp.xyz/api/habitaciones/{$habitacion_id}/", [
@@ -189,6 +190,7 @@ class ImagenController extends Controller
                     'estado_habitacion' =>$habitacion['estado_habitacion'],
                     'caracteristicas' => $habitacion['caracteristicas'],
                 ]);
+                $cerradura->cantidad_veces_abierto=$cerradura->cantidad_veces_abierto+1;
                 // dd("abrir");
             }else {
                 # code...
@@ -201,6 +203,7 @@ class ImagenController extends Controller
                     'estado_habitacion' =>$habitacion['estado_habitacion'],
                     'caracteristicas' => $habitacion['caracteristicas'],
                 ]);
+                $cerradura->cantidad_veces_cerrado=$cerradura->cantidad_veces_cerrado+1;
                 // dd("cerrar");
             }
 
